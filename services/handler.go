@@ -37,7 +37,7 @@ func HandlerRoot(c *cli.Context) error {
 }
 
 func ReadBody(req *http.Response, file *File) error {
-	body := make([]byte, 4096)
+	body := make([]byte, 4096*1000)
 	i, err := req.Body.Read(body)
 	if err != nil {
 		if err == io.EOF {
