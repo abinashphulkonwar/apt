@@ -18,9 +18,11 @@ func NewFile(path string) *File {
 	}
 	paths := strings.Split(path, "/")
 	file_name := paths[len(paths)-1]
-	if file_name == "" {
+	if file_name == "" || !strings.Contains(file_name, ".") || strings.Contains(file_name, "?") || strings.Contains(file_name, "=") {
 		file_name = uuid.NewString()
 	}
+	println(file_name)
+
 	return &File{
 		path:       file_name,
 		connection: nil,
